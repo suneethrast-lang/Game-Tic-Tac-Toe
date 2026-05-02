@@ -1,7 +1,10 @@
 # Collabortors->
 G Yoshithaa Sree
+
 Narbavee
+
 ST Suneethra 
+
 # Tic-Tac-Toe Game
 
 A Python implementation of the classic Tic-Tac-Toe (Noughts and Crosses) game for two players.
@@ -9,122 +12,154 @@ A Python implementation of the classic Tic-Tac-Toe (Noughts and Crosses) game fo
 ## Overview
 
 This project includes multiple implementations of Tic-Tac-Toe:
-
-1. **Terminal Edition** (active): A simple 2-player terminal-based game
+1. **Terminal Edition** (active): A simple 2-player terminal-based game with an intuitive interface
 
 ## Features
 
 ### Terminal Edition (Active)
-- **Two-player gameplay**: Player X vs Player O
-- **Simple interface**: Play directly in the terminal
-- **Input validation**: Ensures valid moves and prevents occupied cell placement
-- **Win detection**: Automatically detects winning conditions (rows, columns, diagonals)
-- **Draw detection**: Identifies when the board is full with no winner
+- ✅ **Two-player gameplay**: Players compete as X and O
+- ✅ **Simple interface**: Easy-to-use terminal display
+- ✅ **Input validation**: Validates moves and prevents invalid placements
+- ✅ **Win detection**: Automatically detects winners (rows, columns, diagonals)
+- ✅ **Draw detection**: Identifies draw conditions
+- ✅ **Multi-game support**: Play multiple consecutive games
+- ✅ **Clear board display**: 3×3 grid shown after each move
 
 ### Visual Edition (Available - Currently Commented)
-- **NumPy integration**: Efficient board state representation using 3×3 integer matrix
-- **Matplotlib visualization**: Interactive graphical display of the board
-- **Real-time updates**: Board updates instantly as players make moves
-- **Win/Draw messaging**: Results displayed both in the terminal
-- **Multi-game support**: Play multiple rounds without restarting
+
+- Real-time board visualization
+- Win/Draw messaging on plots
+- Multi-round support
 
 ## Requirements
 
 ```
 Python 3.7+
-numpy (for visual edition)
-matplotlib (for visual edition)
+numpy (optional - for visual edition)
+matplotlib (optional - for visual edition)
 ```
 
 ## Installation
 
 1. Clone or download this repository
-2. Install required packages:
-   ```bash
-   pip install numpy matplotlib
-   ```
 
 ## Usage
 
-### Running the Terminal Game
+### Running the Game
 
 ```bash
 python use_numpy.py
 ```
 
-### Game Rules
+## Game Rules
 
-- **Players**: Two human players (Player 1: X, Player 2: O)
+- **Players**: Two human players choose X or O at the start
 - **Board**: 3×3 grid with positions numbered 1-9
+- **Positions**: 
+  ```
+   1 | 2 | 3
+  ---|---|---
+   4 | 5 | 6
+  ---|---|---
+   7 | 8 | 9
+  ```
 - **Turn-based**: Players alternate placing their mark
 - **Winning**: First to get 3 marks in a row (horizontal, vertical, or diagonal) wins
 - **Draw**: If all 9 cells are filled with no winner, the game is a draw
+- **Replay**: After each game, both players can choose to play again
 
-### How to Play
+## How to Play
 
-1. Each player enters their move when prompted
-2. Enter a position number (1-9) corresponding to the board position
-3. The game alternates between players until there's a winner or a draw
-4. After each game, players can choose to play again
+1. Run the script: `python use_python.py.`
+2. Choose your symbol: Enter `X` or `O`
+3. Players alternate turns
+4. When prompted, enter a position number (1-9) to place your mark
+5. The board updates after each move
+6. Game ends when someone wins, or the board is full (draw)
+7. Choose whether to play again
 
 ## Project Structure
 
 ```
 Tic-Tac-Toe/
-├── use_numpy.py          # Main game file (contains both implementations)
-├── tictactoe.py          # Alternative implementation
-├── README.md             # This file
+├── use_python.py          # Main game file (both implementations)
+└── README.md             # This file
 ```
 
 ## Code Components
 
 ### Key Functions (Terminal Edition)
 
-- `create_board()`: Initializes an empty 3×3 board
-- `display_board(board)`: Prints the current board state to the terminal
-- `player_input()`: Gets player symbol choice (X or O)
-- `place_mark(board, pos, player)`: Places a player's mark on the board
-- `check_win(board)`: Determines if there's a winner
-- `check_draw(board)`: Determines if the game is a draw
-
-### Key Functions (Visual Edition - Commented)
-
-- `init_board()`: Creates a fresh NumPy 3×3 matrix
-- `draw_x()` / `draw_o()`: Matplotlib rendering functions for marks
-- `draw_board()`: Renders the full board with grid and labels
-- `check_winner()`: NumPy-based win detection
-- `get_player_move()`: Interactive input with validation
-- `play_game()`: Main game loop with multiple round support
+| Function | Purpose |
+|----------|---------|
+| `show_board()` | Initializes an empty 3×3 board |
+| `choose()` | Prompts players to choose X or O |
+| `get_move(player_name, mark)` | Places a player's mark on the board, if the position is empty, else enter another position |
+| `check_win(mark)` | Checks whether PlayerX or PlayerO wins or not |
+| `play()` | Main game loop for one complete game |
 
 ## Example Gameplay
 
 ```
+Welcome to Tic Tac Toe
 Choose X or O: X
 
- 1 | 2 | 3
+ 
+   |   |   
 ---|---|---
- 4 | 5 | 6
+   |   |   
 ---|---|---
- 7 | 8 | 9
+   |   |   
+ 
 
-Player 1, enter your move (1-9): 5
+Player X's turn
+Enter position (1-9): 5
 
- 1 | 2 | 3
+ 
+   |   |   
 ---|---|---
- 4 | X | 6
+   | X |   
 ---|---|---
- 7 | 8 | 9
+   |   |   
+ 
 
-Player 2, enter your move (1-9): 1
+Player O's turn
+Enter position (1-9): 1
+
+ 
+ O |   |   
+---|---|---
+   | X |   
+---|---|---
+   |   |   
+ 
+
+...
+
+ X | O | X
+---|---|---
+ O | X |  
+---|---|---
+   | O | X
+
+Player X wins!
+Enter 1, to continue: 0
 ```
+
+## Win Conditions
+
+The game checks for wins in 8 different patterns:
+- **3 Rows**: `[0,1,2]`, `[3,4,5]`, `[6,7,8]`
+- **3 Columns**: `[0,3,6]`, `[1,4,7]`, `[2,5,8]`
+- **2 Diagonals**: `[0,4,8]`, `[2,4,6]`
 
 ## Future Enhancements
 
-- AI opponent (computer player)
-- Difficulty levels for AI
-- Game statistics/scoring
+- AI opponent with difficulty levels
+- Game statistics and scoring
 - Network multiplayer support
-- Web-based version with frontend
+- GUI with tkinter
+- Web-based version
 
 ## License
 
