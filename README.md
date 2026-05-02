@@ -35,8 +35,6 @@ This project includes multiple implementations of Tic-Tac-Toe:
 
 ```
 Python 3.7+
-numpy (optional - for visual edition)
-matplotlib (optional - for visual edition)
 ```
 
 ## Installation
