@@ -114,4 +114,7 @@ def play():
 
 
 # Start
-play()
+choice=1
+while choice==1:
+    play_game()
+    choice=int(input("Enter 1, to continue:"))
