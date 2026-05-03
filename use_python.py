@@ -100,7 +100,7 @@ def check_win(board,mark): #if true , game ends
 
 
 # -------------------------------
-# MAIN GAME
+# MAIN GAME FUNCTION
 # -------------------------------
 def play(): #runs one full game
 
@@ -126,7 +126,11 @@ def play(): #runs one full game
         if check_win(board,current_mark):
             show_board(board)
             print(current_name, "wins!")
-            return #ends the game
+            if current_name == "Player 1":
+                return 1
+            else:
+                return 2
+            #ends the game
 
         # Switch player
         if current_name == p1:
@@ -139,18 +143,31 @@ def play(): #runs one full game
     #if all nine moves are made and there is no winner
     show_board(board)
     print("Draw game")
+    return 0
 
 
 # -------------------------------
-# REPLAY LOOP
+# CALLING THE GAME + REPLAY LOOP 
 # -------------------------------
 
+p1_score = 0
+p2_score = 0
 while True:
-    play()
+    result = play()
+
+    # updates the scores
+    if result == 1:
+        p1_score += 1
+    elif result == 2:
+        p2_score += 1
+
+    # shows the scores
+    print("\nScore:")
+    print("Player 1:", p1_score)
+    print("Player 2:", p2_score)
 
     choice = input("Play again? (yes/no): ").lower()
 
-    #if the user does not type yes , stops the game
     if choice != "yes":
-        print("Game ended...")
+        print("Game ended.")
         break
