@@ -144,30 +144,3 @@ def play(): #runs one full game
     show_board(board)
     print("Draw game")
     return 0
-
-
-# -------------------------------
-# CALLING THE GAME + REPLAY LOOP 
-# -------------------------------
-
-p1_score = 0
-p2_score = 0
-while True:
-    result = play()
-
-    # updates the scores
-    if result == 1:
-        p1_score += 1
-    elif result == 2:
-        p2_score += 1
-
-    # shows the scores
-    print("\nScore:")
-    print("Player 1:", p1_score)
-    print("Player 2:", p2_score)
-
-    choice = input("Play again? (yes/no): ").lower()
-
-    if choice != "yes":
-        print("Game ended.")
-        break
